@@ -278,7 +278,7 @@ public class FormSistema extends javax.swing.JFrame {
             rowData[6] = d.getTotalkills();
             rowData[7] = d.getHeadshot();
             rowData[8] = d.getImpact();
-            // System.out.println("TempMin:"+d.getTemperaturaMinima()+"\n");
+            
             model.addRow(rowData);
         }// fim preenche modelo
     }// fim mostra
@@ -543,10 +543,11 @@ public class FormSistema extends javax.swing.JFrame {
     
      private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // Evento do botão de busca binária
+        String criterio = (String) cbOrdena.getSelectedItem();
         String textoBusca = jTextField1.getText().trim();
         
 
-        if (radioNick.isSelected()) {
+        if (radioNick.isSelected() && "Nick".equals(criterio)) {
             // Realize a pesquisa binária com base no Nick
             int comparacoesPorNick = buscaBinariaPorNick(textoBusca);
             if (comparacoesPorNick != -1) {
@@ -554,7 +555,7 @@ public class FormSistema extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Jogador não encontrado!");
             }
-        } else if (radioPais.isSelected()) {
+        } else if (radioPais.isSelected()&& "País".equals(criterio)) {
             // Realize a pesquisa binária com base no País
             int comparacoesPorPais = buscaBinariaPorPais(textoBusca);
             JOptionPane.showMessageDialog(this, "País encontrado!\nComparações por País: " + comparacoesPorPais);
@@ -567,8 +568,9 @@ public class FormSistema extends javax.swing.JFrame {
      private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // Evento do botão de busca sequencial
         String textoBusca = jTextField1.getText().trim();
+        String criterio = (String) cbOrdena.getSelectedItem();
 
-        if (radioNick.isSelected()) {
+        if (radioNick.isSelected()&& "Nick".equals(criterio)) {
             // Realize a pesquisa sequencial com base no Nick
             int comparacoesPorNick = buscaSequencialPorNick(textoBusca);
             if (comparacoesPorNick != -1) {
@@ -576,7 +578,7 @@ public class FormSistema extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Jogador não encontrado!");
             }
-        } else if (radioPais.isSelected()) {
+        } else if (radioPais.isSelected() && "País".equals(criterio)) {
             // Realize a pesquisa sequencial com base no País
             int comparacoesPorPais = buscaSequencialPorPais(textoBusca);
             JOptionPane.showMessageDialog(this, "País encontrado!\nComparações por País: " + comparacoesPorPais);
